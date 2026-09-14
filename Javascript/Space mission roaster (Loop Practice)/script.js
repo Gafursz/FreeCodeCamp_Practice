@@ -86,5 +86,39 @@ const EVAReadySquad = getEVAReadyCrew(updatedSquad);
 // for (let i = 0; i < EVAReadySquad.length; i++) {
 //     console.log(EVAReadySquad[i].name);
 // }
+function chunkCrew(crew, size) {
+    if (size < 1) {
+        console.log("Chunk size must be >= 1");
+        return;
+    }
+
+    const chunks = [];
+    for (let i = 0; i < crew.length; i += size) {
+        chunks.push(crew.slice(i, i + size));
+    }
+
+    return chunks;
+}
+
+const EVAChunks = chunkCrew(EVAReadySquad, 3);
+
+// Task 26
+
+// for (let i = 0; i < EVAChunks.length; i++) {
+//     console.log(`Chunk ${i + 1}:`);
+//     for (let j = 0; j < EVAChunks[i].length; j++) {
+//         console.log(EVAChunks[i][j].name);
+//     }
+// }
+
+function printCrewSummary(crew) {
+    const sorted = crew.slice();
+    sortByPriorityDescending(sorted);
+    for (const astronaut of sorted) {
+        console.log(astronaut.name);
+    }
+}
+
+printCrewSummary(updatedSquad);
 
 
